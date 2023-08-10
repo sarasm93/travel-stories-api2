@@ -4,7 +4,7 @@ from .models import Profile
 from .serializers import ProfileSerializer
 from django.http import Http404
 from rest_framework import status
-from travel_stories_api.permissions import IsOwnerOrReadOnly
+from travelstories_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
