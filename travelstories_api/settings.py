@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount', 
     'dj_rest_auth.registration',
     'corsheaders',
+
 ]
 
 SITE_ID = 1
@@ -80,10 +81,10 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %b %Y'
 }
 
-if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer'
-    ]
+# if 'DEV' not in os.environ:
+#    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+#        'rest_framework.renderers.JSONRenderer'
+#    ]
 
 
 REST_USE_JWT = True
