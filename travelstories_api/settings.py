@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import re
 
 if os.path.exists('env.py'):
     import env
@@ -38,7 +39,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'travel-stories-api2-af9d4146e908.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-sarasm93-travelstoriesa-qevamglw0zx.ws-eu102.gitpod.io', 
+    'travel-stories-api2-af9d4146e908.herokuapp.com',
+]
 
 
 # Application definition
@@ -52,6 +56,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
     'rest_framework.authtoken', 
     'dj_rest_auth', 
     'django.contrib.sites', 
@@ -60,8 +65,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount', 
     'dj_rest_auth.registration',
     'corsheaders',
-
-
 ]
 
 SITE_ID = 1
@@ -88,6 +91,7 @@ JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_SECURE = True
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
+
 REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'travelstories_api.serializers.CurrentUserSerializer'}
 
 MIDDLEWARE = [
@@ -138,17 +142,14 @@ WSGI_APPLICATION = 'travelstories_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DEV' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
+DATABASES = {
+    'default': ({
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    } if 'DEV' in os.environ else dj_database_url.parse(
+        os.environ.get('DATABASE_URL')
+    ))
+}
 
 
 # Password validation
