@@ -7,9 +7,7 @@ from .serializers import StorySerializer
 
 class StoryList(APIView):
     serializer_class = StorySerializer
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request):
         stories = Story.objects.all()
