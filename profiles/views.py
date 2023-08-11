@@ -20,7 +20,7 @@ class ProfileList(APIView):
 class ProfileDetail(APIView):
     """
     Profile detail view.
-    Render ddit form in the browser.
+    Render edit form in the browser.
     Get the profile and serialize the data. 
     If data is valid - save it. Otherwise throw error.
     """

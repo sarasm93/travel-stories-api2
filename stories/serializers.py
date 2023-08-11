@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Story
+from stories.models import Story
 
 
 class StorySerializer(serializers.ModelSerializer):
@@ -8,22 +8,22 @@ class StorySerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
-    def get_is_owner(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
-
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError("Image size can't be larger than 2MB")
+            raise serializers.ValidationError('Image size larger than 2MB!')
         if value.image.height > 4096:
             raise serializers.ValidationError(
-                "Image height can't be larger than 4096px"
+                'Image height larger than 4096px!'
             )
         if value.image.width > 4096:
             raise serializers.ValidationError(
-                "Image width can't be larger than 4096px"
+                'Image width larger than 4096px!'
             )
         return value
+
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = Story

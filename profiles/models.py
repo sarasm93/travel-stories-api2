@@ -8,7 +8,8 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=50)
     content = models.TextField(max_length=300, blank=True)
-    image = models.ImageField(upload_to='images/', default='../default-profile_pbn3el')
+    image = models.ImageField(
+        upload_to='images/', default='../default-profile_pbn3el')
 
     # Meta och __str__ tagen från Moments API
     class Meta:
