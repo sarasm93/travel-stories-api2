@@ -41,7 +41,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-sarasm93-travelstoriesa-qevamglw0zx.ws-eu103.gitpod.io', 
-    os.environ.get('ALLOWED_HOST'),
+    'travel-stories-api2-af9d4146e908.herokuapp.com',
 ]
 
 
@@ -84,10 +84,10 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %b %Y'
 }
 
-# if 'DEV' not in os.environ:
-#    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-#        'rest_framework.renderers.JSONRenderer'
-#    ]
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer'
+    ]
 
 
 REST_USE_JWT = True
