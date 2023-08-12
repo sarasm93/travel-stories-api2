@@ -44,7 +44,6 @@ ALLOWED_HOSTS = [
     'travel-stories-api2-af9d4146e908.herokuapp.com',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -68,6 +67,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'stories',
+    'destinations',
 
 ]
 
