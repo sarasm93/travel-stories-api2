@@ -50,7 +50,7 @@ class StoryDetail(APIView):
             story = Story.objects.get(pk=pk)
             self.check_object_permissions(self.request, story)
             return story
-        except Story    .DoesNotExist:
+        except Story.DoesNotExist:
             raise Http404
     
     def get(self, request, pk):
