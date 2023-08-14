@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from stories.models import Story
 from likes.models import Like
+from saves.models import Save
 
 
 class StorySerializer(serializers.ModelSerializer):
@@ -10,6 +11,7 @@ class StorySerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
+    save_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -37,10 +39,19 @@ class StorySerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+    def get_save_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            save = Save.objects.filter(
+                owner=user, story=obj
+            ).first()
+            return save.id if save else None
+        return None
+
     class Meta:
         model = Story
         fields = [
             'id', 'owner', 'title', 'destination', 'content', 'image',
             'created_at', 'is_owner', 'profile_id', 'profile_image', 
-            'like_id', 'likes_count', 
+            'like_id', 'likes_count', 'save_id',
         ]
