@@ -28,4 +28,5 @@ urlpatterns = [
     path('', include('stories.urls')),
     path('', include('destinations.urls')),
     path('', include('likes.urls')),
+    path('', include('saves.urls')),
 ]
