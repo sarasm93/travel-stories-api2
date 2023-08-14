@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'stories',
     'destinations',
     'likes',
+    'saves',
 
 ]
 
