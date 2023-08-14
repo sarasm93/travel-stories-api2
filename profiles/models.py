@@ -11,7 +11,6 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default-profile_pbn3el')
 
-    # Meta och __str__ tagen från Moments API
     class Meta:
         ordering = ['-created_at']
 

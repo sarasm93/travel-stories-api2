@@ -10,7 +10,6 @@ class Story(models.Model):
     image = models.ImageField(upload_to='images/', default='../default-image_qzr0l4')
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # Meta och __str__ tagen från Moments API
     class Meta:
         ordering = ['-created_at']
 
