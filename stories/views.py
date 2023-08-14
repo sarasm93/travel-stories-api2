@@ -1,6 +1,5 @@
 from django.db.models import Count
 from rest_framework import generics, permissions
-from django_filters.rest_framework import DjangoFilterBackend
 from travelstories_api.permissions import IsOwnerOrReadOnly
 from .models import Story
 from .serializers import StorySerializer
