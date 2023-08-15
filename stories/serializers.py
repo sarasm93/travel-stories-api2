@@ -11,6 +11,7 @@ class StorySerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
     save_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
@@ -53,5 +54,5 @@ class StorySerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'title', 'destination', 'content', 'image',
             'created_at', 'is_owner', 'profile_id', 'profile_image', 
-            'like_id', 'likes_count', 'save_id',
+            'like_id', 'likes_count', 'comments_count', 'save_id',
         ]

@@ -1,5 +1,5 @@
 from django.db.models import Count
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from travelstories_api.permissions import IsOwnerOrReadOnly
 from .models import Story
 from .serializers import StorySerializer
@@ -13,7 +13,17 @@ class StoryList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Story.objects.annotate(
         likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True),
     ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter,
+
+    ]
+    ordering_fields = [
+        'likes_count',
+        'comments_count',
+        'saves__created_at'
+    ]
 
     def perform_create(self, serializer):
         """
@@ -30,4 +40,5 @@ class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Story.objects.annotate(
         likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True),
     ).order_by('-created_at')
