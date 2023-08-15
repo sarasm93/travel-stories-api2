@@ -11,12 +11,16 @@ class DestinationPriority(models.IntegerChoices):
     MIGHT_HAPPEN = 5, 'Might happen'
 
 
+class DefaultStoryTag(models.CharField):
+    NoStoryTag = "No story tag", 'No story tag'
+
+
 class Destination(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     destination = models.CharField(max_length=50)
     activities = models.TextField(max_length=800, blank=True)
     priority = models.IntegerField(choices=DestinationPriority.choices, default=DestinationPriority.NOW)
-    story_tag = models.ForeignKey(Save, on_delete=models.CASCADE)
+    story_tag = models.ForeignKey(Save, on_delete=models.CASCADE, default=DefaultStoryTag.NoStoryTag, blank=True)
 
     class Meta:
         ordering = ['-priority']
