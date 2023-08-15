@@ -15,5 +15,5 @@ class DestinationSerializer(serializers.ModelSerializer):
         model = Destination
         fields = [
             'id', 'owner', 'destination', 'activities', 'priority',
-            'is_owner', 'profile_id',
+            'story_tag', 'is_owner', 'profile_id',
         ]
