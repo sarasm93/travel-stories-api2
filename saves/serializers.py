@@ -8,6 +8,7 @@ class SaveSerializer(serializers.ModelSerializer):
     Serializer for the Save model.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+    story_title = serializers.ReadOnlyField(source='story.title')
 
     def create(self, validated_data):
         try:
@@ -20,5 +21,5 @@ class SaveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Save
         fields = [
-            'id', 'owner', 'story', 'created_at',
+            'id', 'owner', 'story', 'story_title', 'created_at',
         ]

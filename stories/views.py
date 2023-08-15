@@ -20,7 +20,7 @@ class StoryList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'saves__owner__profile',
+        'saved__owner__profile',
         'owner__profile',
     ]
     ordering_fields = [
