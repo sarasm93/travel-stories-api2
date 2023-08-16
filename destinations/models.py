@@ -16,7 +16,7 @@ class Destination(models.Model):
     destination = models.CharField(max_length=50)
     activities = models.TextField(max_length=800, blank=True)
     priority = models.IntegerField(choices=DestinationPriority.choices, default=DestinationPriority.NOW)
-    story_tag = models.ManyToManyField(Save, blank=True)
+    story_tag = models.ManyToManyField(Save, null=True, blank=True)
 
     class Meta:
         ordering = ['-priority']
