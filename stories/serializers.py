@@ -2,6 +2,7 @@ from rest_framework import serializers
 from stories.models import Story
 from likes.models import Like
 from saves.models import Save
+from comments.models import Comment
 
 
 class StorySerializer(serializers.ModelSerializer):
