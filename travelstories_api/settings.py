@@ -41,7 +41,7 @@ DEBUG = True
 #'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    '8000-sarasm93-travelstoriesa-qevamglw0zx.ws-eu103.gitpod.io', 
+    '8000-sarasm93-travelstoriesa-qevamglw0zx.ws-eu104.gitpod.io', 
     'travel-stories-api2-af9d4146e908.herokuapp.com',
 ]
 

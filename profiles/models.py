@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 
 
 class Profile(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     created_at = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=50)
     content = models.TextField(max_length=300, blank=True)

@@ -1,10 +1,11 @@
-from rest_framework import status, permissions
+from rest_framework import status, permissions, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Destination
+from destinations.models import Destination
 from .serializers import DestinationSerializer
 from django.http import Http404
 from travelstories_api.permissions import IsOwnerOrReadOnly
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class DestinationList(APIView):
@@ -13,6 +14,20 @@ class DestinationList(APIView):
     """
     serializer_class = DestinationSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Destination.objects.all()
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'profile__owner',
+    ]
+
+    def perform_create(self, serializer):
+        """
+        Link a destination with the logged in user.
+        """
+        serializer.save(owner=self.request.user)
 
     def get(self, request):
         destinations = Destination.objects.all()
@@ -44,6 +59,7 @@ class DestinationDetail(APIView):
     """
     serializer_class = DestinationSerializer
     permission_classes = [IsOwnerOrReadOnly]
+    queryset = Destination.objects.all()
 
     def get_object(self, pk):
         try:

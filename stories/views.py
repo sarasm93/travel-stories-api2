@@ -25,7 +25,7 @@ class StoryList(generics.ListCreateAPIView):
     ]
     ordering_fields = [
         'likes_count',
-        'saves__created_at'
+        'saved__created_at'
     ]
 
     def perform_create(self, serializer):

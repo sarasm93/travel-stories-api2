@@ -25,4 +25,3 @@ class SaveDetail(generics.RetrieveDestroyAPIView):
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = SaveSerializer
-    queryset = Save.objects.all()
