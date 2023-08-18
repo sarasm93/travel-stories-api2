@@ -11,6 +11,7 @@ class StorySerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
+    comment_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     save_id = serializers.SerializerMethodField()
 
@@ -48,11 +49,21 @@ class StorySerializer(serializers.ModelSerializer):
             ).first()
             return save.id if save else None
         return None
+    
+    def get_comment_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            comment = Comment.objects.filter(
+                owner=user, story=obj
+            ).first()
+            return comment.id if comment else None
+        return None
 
     class Meta:
         model = Story
         fields = [
             'id', 'owner', 'title', 'destination', 'content', 'image',
-            'created_at', 'is_owner', 'profile_id', 'profile_image', 
-            'like_id', 'likes_count', 'comments_count', 'save_id', 
+            'created_at', 'is_owner', 'profile_id', 'profile_image',
+            'like_id', 'likes_count', 'comment_id', 'comments_count',
+            'save_id',
         ]
