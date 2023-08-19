@@ -43,4 +43,5 @@ class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Story.objects.annotate(
         likes_count=Count('likes', distinct=True),
+        comments_count=Count('saved', distinct=True),
     ).order_by('-created_at')
