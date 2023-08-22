@@ -20,7 +20,7 @@ class DestinationList(APIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'profile__owner',
+        'owner__profile',
     ]
 
     def perform_create(self, serializer):
