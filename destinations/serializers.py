@@ -4,10 +4,9 @@ from stories.models import Story
 
 
 class DestinationSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.profile.username')
+    owner = serializers.ReadOnlyField(source='owner.owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.id')
-    story_tag = serializers.ReadOnlyField(source='saved.title')
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -17,5 +16,5 @@ class DestinationSerializer(serializers.ModelSerializer):
         model = Destination
         fields = [
             'id', 'owner', 'destination', 'activities', 'priority',
-            'story_tag', 'is_owner', 'profile_id',
+            'story_tag', 'is_owner', 'profile_id', 'story_tag'
         ]
