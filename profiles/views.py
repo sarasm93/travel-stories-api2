@@ -22,5 +22,5 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
-        stories_count=Count('owner__stories', distinct=True),
+        stories_count=Count('owner__story', distinct=True),
     ).order_by('created_at')
