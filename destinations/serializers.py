@@ -16,7 +16,7 @@ class DestinationSerializer(serializers.ModelSerializer):
     def get_story_tag(self, obj):
         story_list = []
         for story in obj.story_tag.all():
-            story_list.append(story.title)
+            story_list.append(story.story.title)
         return story_list
 
     class Meta:
