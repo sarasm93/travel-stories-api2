@@ -12,7 +12,7 @@ class DestinationPriority(models.IntegerChoices):
 
 
 class Destination(models.Model):
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='creator')
     destination = models.CharField(max_length=50)
     activities = models.TextField(max_length=800, blank=True)
     priority = models.IntegerField(choices=DestinationPriority.choices, default=DestinationPriority.NOW)

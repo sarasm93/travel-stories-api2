@@ -14,6 +14,7 @@ class StoryList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Story.objects.annotate(
         likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True),
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -43,5 +44,5 @@ class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Story.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('saved', distinct=True),
+        comments_count=Count('comment', distinct=True),
     ).order_by('-created_at')

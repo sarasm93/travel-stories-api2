@@ -4,7 +4,7 @@ from stories.models import Story
 
 
 class DestinationSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.owner.username')
+    owner = serializers.ReadOnlyField(source='owner.profile.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.id')
 
