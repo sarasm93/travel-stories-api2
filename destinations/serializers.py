@@ -7,14 +7,21 @@ class DestinationSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.id')
+    story_tag = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner.owner
 
+    def get_story_tag(self, obj):
+        story_list = []
+        for story in obj.story_tag.all():
+            story_list.append(story.title)
+        return story_list
+
     class Meta:
         model = Destination
         fields = [
             'id', 'owner', 'destination', 'activities', 'priority',
-            'story_tag', 'is_owner', 'profile_id', 'story_tag'
+            'story_tag', 'is_owner', 'profile_id',
         ]
