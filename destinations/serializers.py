@@ -6,7 +6,7 @@ from stories.models import Story
 class DestinationSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source='owner.id')
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     story_tag = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
