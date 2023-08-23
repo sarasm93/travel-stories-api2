@@ -4,14 +4,14 @@ from stories.models import Story
 
 
 class DestinationSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.owner.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.id')
     story_tag = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
-        return request.user == obj.owner.owner
+        return request.user == obj.owner
 
     def get_story_tag(self, obj):
         story_list = []
