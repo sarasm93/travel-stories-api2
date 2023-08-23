@@ -18,6 +18,7 @@ class DestinationList(generics.ListCreateAPIView):
         """
         Link a destination with the logged in user.
         """
+        print('OWNER: ', self.request.user)
         serializer.save(owner=self.request.user)
 
 
