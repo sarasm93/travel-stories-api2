@@ -13,12 +13,21 @@ class DestinationList(generics.ListCreateAPIView):
     serializer_class = DestinationSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Destination.objects.all()
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__profile',
+    ]
+    ordering_fields = [
+        'priority',
+    ]
 
     def perform_create(self, serializer):
         """
         Link a destination with the logged in user.
         """
-        print('OWNER: ', self.request.user)
         serializer.save(owner=self.request.user)
 
 

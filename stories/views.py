@@ -33,7 +33,6 @@ class StoryList(generics.ListCreateAPIView):
         """
         Link a story with the logged in user.
         """
-        print('OWNER: ', self.request.user)
         serializer.save(owner=self.request.user)
 
 
