@@ -9,7 +9,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=50)
     content = models.TextField(max_length=300, blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../default-profile-small_gpfni0')
+        upload_to='images/', default='../default-profile_pbn3el')
 
     class Meta:
         ordering = ['-created_at']
