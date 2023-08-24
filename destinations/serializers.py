@@ -7,7 +7,7 @@ class DestinationSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    story_tag = serializers.SerializerMethodField()
+    story_tag = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     def get_is_owner(self, obj):
         request = self.context['request']
