@@ -11,7 +11,6 @@ class DestinationSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         request = self.context['request']
-        # print('REQUEST: ', request.user == obj.owner)
         return request.user == obj.owner
 
     def get_story_tag(self, obj):
