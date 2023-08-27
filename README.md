@@ -1,108 +1,283 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **Travel Stories API**
 
-Welcome Sara Smith,
+Travel Stories is a social networking platform targeted towards everyone that loves to travel, want to share their adventures with others and keep track of feature destinations to visit. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Travel Stories offers a spaces for users to document and share their travel experiances as stories. All stories can be liked and commented on so that the user can engage with the community. A story can also be saved, which will then connect it to a user bucket list. In the bucket list all feature destinations that the user wants to visit can be listed along with notes of what activites the users wiches to do at that location. This enables the user to document and organise their travel plans and stay connected to their favorite content creators. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+This project was built in two parts. This app makes up the back-end API, powered by Django REST Framework. The front-end was built with React and the live site can be found [here](https://travel-stories2-eeac1d39adbb.herokuapp.com/).
 
-## Gitpod Reminders
+[Link to the live Travel Stories API](https://travel-stories-api2-af9d4146e908.herokuapp.com/)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+[Link to the Back End API Repo](https://github.com/sarasm93/travel-stories-api2)
 
-`python3 -m http.server`
+![An image of the deployed front-end app on different screen sizes](documentation/readme-intro.png)
 
-A blue button should appear to click: _Make Public_,
+## **Project goals**
+The main objective with the platform is to inspire to travel, by engage people to share their travel stories, meet new people, discover new places to visit and in the end - travel more!
 
-Another blue button should appear to click: _Open Browser_.
+### **User goals**
+A user can have more than one goal when visiting the platform. And one user may have different goals compared to another. Some users may only want to look at stories and be inspired. Some users may want to be inspired but also inspire others by sharing their own tavel stories and use the platform to communicate with other travelers by commenting and liking their stories. Some users might want to document their insipriation by saving a story from another user, build a bucket list and use the saved story as a tag on a bucket list item.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### **Site owner goals**
+The goal is to provide the users with a reliable platform and a good user experiance that doesn´t take a way any of the inspiration and joy provided by the travel stories. The site should encurage continued user interactions and be of high quality. To make this possible the site should be intuitive, accessible and well structured. 
 
-A blue button should appear to click: _Make Public_,
+## **UX**
 
-Another blue button should appear to click: _Open Browser_.
+### **User Stories**
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+## **Agile Development**
+The app was built using an agile approach, with a GitHub project board, milestones, labels and issues. The GitHub project board can be found [here](https://github.com/users/sarasm93/projects/11). Everthing that needed to be done to develop this app was divided into epics, and each epic was divided into user stories with tasks. All epics and user stories mentioned above were created with GitHub issues. The agile development iterations are created with milestones, i.e. all issues were linked to a milstone. They are also linked to an epic using labels. Labels have also been used to priorities which issues are most important by create labels namned "must have", "should have", "could have" and "wont´t have". 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## **Data models and database**
+The ERD diagram shown below was made with [Lucid Charts](https://www.lucidchart.com/pages/landing?utm_source=google&utm_medium=cpc&utm_campaign=_chart_en_tier2_mixed_search_brand_exact_&km_CPC_CampaignId=1520850463&km_CPC_AdGroupID=57697288545&km_CPC_Keyword=lucid%20charts&km_CPC_MatchType=e&km_CPC_ExtensionID=&km_CPC_Network=g&km_CPC_AdPosition=&km_CPC_Creative=442433237648&km_CPC_TargetID=kwd-64262996435&km_CPC_Country=9062397&km_CPC_Device=c&km_CPC_placement=&km_CPC_target=&gclid=CjwKCAjwwb6lBhBJEiwAbuVUSp5GJupY-n0T0KIxQyga5tojqyWYZIbI3dXIpvdCgxbxCcPYgxb-_RoCMJAQAvD_BwE) and shows the structure of the PostgreSQL database used in this project. It visualises the types of data models required and the relationships between them. 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Django AllAuth was used for the user model and user authentication system.
 
-------
+The profile model was created so the user can create and save stories and create bucket list destination items that can be edited and deleted. 
 
-## Release History
+The destination model holds all information about at destination item that a user can add to it´s bucket list, such as creator of the item, destination, activities, story tags and priority. 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+The travel story model holds all information about a story, such as creator, title, destination, content, image and creation date.  
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+The save model makes it possible for the user to connect a bucket list destination item to a travel story by saving the story. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+The like model holds all information about a like, i.e. which user has made it and on which story. 
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+The comment model holds all information about a comment - which user has made it and on which story, the content of the comment and the creation date. 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+![ERD diagram showing the project data models and the relationships between them - image 1](documentation/models1.png)
+![ERD diagram showing the project data models and the relationships between them - image 2](documentation/models2.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+## **Features**
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## **Testing**
+The site has been tested so that it works on different browsers. It has been tested on Google Chrome, Microsoft Edge, Firefox and Samsung Internet.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### **Manual testing**
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### **Validator testing**
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+I have validated my HTML, CSS, Javascript and Python code with the below websites.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+- HTML: [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input)
+- CSS: [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+- Javascript: [JSHint](https://jshint.com/)
+- Python: [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
 
-------
 
-## FAQ about the uptime script
+### **Resolved problems and bugs**
 
-**Why have you added this script?**
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## **Deployment**
+The back-end API app was deployed to Heroku from GitHub with the following steps:
 
-**How will this affect me?**
+1. Create an external database using [ElephantSQL](https://www.elephantsql.com/). When logged in to your ElephantSQL account, click on “Create New Instance”, choose a plan and give it a name. Then select a region, click the "Review" button to view the details for your plan and finally click "Create instance". 
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+2. Create a Heroku app by logging in to your Heroku account. Click the "New" button in the top right corner and then "Create new app". Give it a name, choose a region and then click the "Create app" button. 
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+3. Attach the external database. 
+	- In the Heroku app that you created, you need to create environment variables, called Config Var at Heroku. This is done under the "Settings"-tab in the top menu. Click the tab. On the settings page scroll down to the Config Vars-section and click the "Reveal Config Vars"-button. 
+	- Go back to your ElephantSQL account, and from the dashboard click on the database instance name for the project. When in the project instance, copy the ElephantSQL database url by clicking on the copy icon. In the Config Vars section in at Heroku, add this url to the VALUE field and add DATABASE_URL to the KEY field. 
+	- In your workspace, create a file called env.py in the top level directory. Add env.py to the list of files in your gitignore file. In the env.py file, import the os library and add the ElephantSQL DATABASE_URL. Below that, also add `os.environ['DEV'] = '1'`. You also need to choose and add a SECRET_KEY value like this: `os.environ.setdefault('SECRET_KEY', 'your-secret-key')`. The key also needs to be added as a config var at Heroku. Add SECRET_KEY in the KEY field and the secret key in the VALUE field. 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
+4. Set up Cloudinary by installing it and the Pillow library. When logged in to your account on Cloudinary, copy your url on the Cloudinary dashboard and paste it into the env.py file, like you did with the SECRET_KEY and DATABASE_URL. Then go to Heroku and add the url to the config vars. Add CLOUDINARY_URL in the KEY field and your url in the VALUE field. If you deploy your app early on in the project process, also add DISABLE_COLLECTSTATIC in KEY field and 1 to VALUE field (remove it before final deployment). Add Cloudinary Libraries to the list of installed apps in settings.py. Then also add static files settings in settings.py to tell Django to use Cloudinary. Type:
+	
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+}
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 ```
 
-**Anything more?**
+5. Preparation in your IDE:
+	- Go to settings.py. Start by adding:
+```
+import os
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+if os.path.isfile("env.py"):
+    import env
+```
+	- Install django rest: pip3 install djangorestframework. Install the django-rest-auth library and django-all-auth (pip3 install 'dj-rest-auth[with_social]') and add the following code to the list of installed apps:
+```
+'rest_framework',
+'rest_framework.authtoken',
+'dj_rest_auth',
+'django.contrib.sites',
+'allauth',
+'allauth.account',
+'allauth.socialaccount',
+'dj_rest_auth.registration',
+```
+	- Add a SITE_ID setting and set it to 1. s
+	- Go to your app urls.py file and add the following code to the urlpatterns list: 
+```
+path('api-auth/', include('rest_framework.urls')),
+path('dj-rest-auth/', include('dj_rest_auth.urls')),
+path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+```
+	- Go back to settings.py and 
+	- To connect to the database created, install dj_database_url and psycopg2 with the following command: `pip3 install dj_database_url==0.5.0 psycopg2`. Import dj_database_url to your settings.py file. In the settings.py file, remove the default database configuration and add this instead (the print message at the end is to confirm that connection has been made with the database):
 
----
+```
+ if 'DEV' in os.environ:
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+ else:
+     DATABASES = {
+         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
+     print('Connected!')
+```
+	- Then remove the default secret key and replace it with this code: SECRET_KEY = os.getenv('SECRET_KEY'). I.e. use the environment variable instead. 
+	- Temporarely comment out `os.environ['DEV'] = '1'` in your env.py file (to make it possible for your IDE to connect to the database. 
+	- Save all files and make a dry run of your migrations in the terminal with this command: `python3 manage.py makemigrations --dry-run`. If you see the `Connected!` message in the terminal the connection to the database works, which means you can remove the `Connected!` print statement and make the migrations with these commands:
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+	- Then create a superuser for the database with the command `python3 manage.py createsuperuser` and the follow the steps. 
 
-Happy coding!
+6. To confirm that the data has been created in your database on ElephantSQL, go to ElephantSQL and the page for your database. Click on "BROWSER" in the left hand side navigation bar. Click the "Table queries" button and select auth_user. Then click "Execute”. When you click the button your superuser details should be displayed. If they are, then it´s confirmed that your tables have been created and data can be added. 
+
+7. Install gunicorn, which is needed for the project to run on Heroku. Go to your workspace again and in the terminal write the command: pip3 install gunicorn django-cors-headers. Then you need to create a requirements.txt file: pip3 freeze --local > requirements.txt
+
+8. Create a file on the top level directory called Procfile and add this code: 
+```
+release: python manage.py makemigrations && python manage.py migrate
+web: gunicorn drf_api.wsgi
+```
+
+9. In the settings.py file, add corsheaders to installed apps and at the top of the middleware add `corsheaders.middleware.CorsMiddleware`. Also add your Heroku hostname to allowed hosts, together with your local host. 
+
+10. Next, set the ALLOWED_ORIGINS for the network requests and anable sending cookies in cross-origin requests. Under the middleware list in settings.py, add:
+```
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
+``` 
+
+11. Change the DEBUG value from True to `'DEV' in os.environ`, which means that DEBUG will be True if the DEV environment variable exists but False it´s not i.e. in production. Go to env.py and comment DEV back in again. Then save all files, add, commit and push your code to GitHub.
+
+12. Add JWT tokens functionality
+- Install the djangorestframework-simplejwt package. With the below code, use the DEV value you created above to differentiate between development and production mode: 
+```
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )], }
+```
+- Add JWT_AUTH attributes with the below code. This will allow front end app and the API deployed to different platforms and the cookies will not be blocked. 
+```
+REST_USE_JWT = True
+JWT_AUTH_SECURE = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
+```
+
+13. Set the JSON Renderer by adding:
+```
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+```
+
+14. Update the requirements.txt file. Then go to Heroku and the dashboard for your app. Scroll to the top menu and click the "Deploy"-tab. Scroll to the "Deployment method"-sction and select GitHub. In the "Connect to Github"-section that shows up, click on "Connect to GitHub". When the connecting is done you will see a search bar where you can search for the repository name. Click on the "Connect"-button that shows up when Heroku has found your repository. Scroll further down and choose either to deploy automatically by clicking the "Enable Automatic Deploys" or deploy manually by clicking the "Deploy Branch"-button. When the deployment is finished you can go to the "Settings"-tab again and scroll down to the "Domains"-section where you can find the link to your deployed app. To open your app you can also click the "Open app" button. When you open your app, you root message should show up.
+
+15. Fix bug in dj-rest-auth
+	- The bug won´t allow users to log out. The issue is connected to the samesite attribute. To fix it create a views.py file in your app folder and import JWT_AUTH with this code:
+```
+from .settings import (
+    JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
+    JWT_AUTH_SECURE,
+```
+	- Then, write a new logout view that sets both jwt tokens to empty strings and also pass samesite=JWT_AUTH_SAMESITE. Add this code:
+```
+@api_view(['POST'])
+def logout_route(request):
+    response = Response()
+    response.set_cookie(
+        key=JWT_AUTH_COOKIE,
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    response.set_cookie(
+        key=JWT_AUTH_REFRESH_COOKIE,
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    return response
+```
+	- Include the logout view in urls.py by importing it and add it to the urlpatterns list above the default dj-rest-auth urls. Then push the code to GitHub, and if you have chosen to manually deploy your app at Heroku make sure you deploy it again. 
+	- In order to use the API with the front end app, add two new environment variables. Go to your allowed hosts in settings.py and copy the string/link for your Heroku app. Go to your app at Heroku, and then the settings tab. Add a config var with the key value of ALLOWED_HOST and paste in the string you copied from settings.py. Go back to settings.py and replace the heroku link with `os.environ.get('ALLOWED_HOST')`.
+	- To add the next variable, you need to follow the below steps. They are adapted to work with Gitpod as this app was developed with Gitpod. The steps will make your app more secure by affecting how Gitpod works and let your workspace be connected to our API when gitpod rotates the workspace URL.
+		- In your settings.py file add: `import re`
+		- Then, in the `if 'CLIENT_ORIGIN' in os.environ:...` code, replace the else statement and body with the following code:
+```
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+```
+		- Go to your deployed front end app and copy the url for the app. Then go back to Heroku and add a config var with the key CLIENT_ORIGIN and paste in the url you just copied as value. Then you need to go to your development environment for your front end app and copy the url for the development version of that app. At Heroku, add one more config var with the key CLIENT_ORIGIN_DEV and paste in the copied url for the development version. Then push the code to GitHub, and if you have chosen to manually deploy your app at Heroku make sure you deploy it again. 
+
+
+## **Technologies, Languages, Frameworks, Libraries, Servers, Programs and Sites used**
+
+### **Languages**
+- Python 
+
+### **Frameworks**
+- [Django Rest Framwork](https://www.django-rest-framework.org/) - main Python web framework used to develop this API
+- [Django](https://www.djangoproject.com/)
+
+### **Libraries**
+- [django-rest-auth](https://pypi.org/project/django-rest-auth/) - provides a set of REST API endpoints for Authentication and Registration
+- [Psycopg2](https://pypi.org/project/psycopg2/) - Python-PostgreSQL database adapter, in order to use Python code (instead of SQL) to do Postgres commands 
+- [dj_database_url](https://pypi.org/project/dj-database-url/) - method returning a Django database connection dictionary
+- [Pillow](https://pypi.org/project/Pillow/8.2.0/) - Python Imaging Library 
+- [urllib3](https://pypi.org/project/urllib3/1.26.15/) - user-friendly HTTP client for Python used by many components in Python, such as requests and pip
+- [PyJWT](https://pypi.org/project/PyJWT/) - JSON Web Token implementation in Python
+
+### **Extensions**
+- [JSONView](https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc)
+- [ES7 React/Redux/GraphQl/React-Native](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+
+### **Servers**
+- [Gunicorn](https://gunicorn.org/) - Python WSGI HTTP Server acting as the web server for the project
+- [PostgreSQL](https://www.postgresql.org/)
+
+### **Programs and Sites**
+- [Git and GitHub](https://github.com/)- version control and as agile tool
+- [Cloudinary](https://cloudinary.com/) - image hosting and management
+- [ElephantSQL](https://www.elephantsql.com/) - free database service that hosts the PostgreSQL database for this project 
+
+## **Credits**
+Code fomr this [Stackoverflow page](https://stackoverflow.com/questions/1117564/set-django-integerfield-by-choices-name) was used in the destination model so that priority choices could be display when creating a destination.
+ 
