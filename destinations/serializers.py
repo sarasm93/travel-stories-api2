@@ -9,17 +9,17 @@ class DestinationSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     # When using the method field ont he story tag, the user 
     # can´t select story tags anymore (the form field disappears)
-    story_tag_list = serializers.SerializerMethodField(read_only=True)
+    saved_story_tag = serializers.SerializerMethodField(read_only=True)
 
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_story_tag_list(self, obj):
-        story_list = []
+    def get_saved_story_tag(self, obj):
+        story_name = []
         for story in obj.story_tag.all():
-            story_list.append({"story": story.story.title, "id": story.story.pk})
-        return story_list
+            story_name.append({"story": story.story.title, "id": story.story.pk})
+        return story_name
 
     # Tried:
     # story_tag = serializers.ReadOnlyField(source='owner.save.story')
@@ -33,5 +33,5 @@ class DestinationSerializer(serializers.ModelSerializer):
         model = Destination
         fields = [
             'id', 'owner', 'destination', 'activities', 'priority',
-            'story_tag_list', 'story_tag', 'is_owner', 'profile_id',
+            'saved_story_tag', 'story_tag', 'is_owner', 'profile_id',
         ]
