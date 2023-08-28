@@ -16,4 +16,4 @@ class Save(models.Model):
         unique_together = ['owner', 'story']
 
     def __str__(self):
-        return f'{self.owner} {self.story}'
+        return f'{self.owner} - {self.story}'
