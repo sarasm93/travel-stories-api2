@@ -43,7 +43,7 @@ class StorySerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    def get_save_id(self, obj):
+    def get_saved_story_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             save = Save.objects.filter(
@@ -52,7 +52,7 @@ class StorySerializer(serializers.ModelSerializer):
             return save.id if save else None
         return None
 
-    def get_save_title(self, obj):
+    def get_saved_story_title(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             save = Save.objects.filter(
