@@ -14,8 +14,8 @@ class StorySerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comment_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
-    saved_story_id = serializers.SerializerMethodField()
-    saved_story_title = serializers.SerializerMethodField()
+    save_id = serializers.SerializerMethodField()
+    save_title = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -43,22 +43,13 @@ class StorySerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    def get_saved_story_id(self, obj):
+    def get_save_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             save = Save.objects.filter(
                 owner=user, story=obj
             ).first()
             return save.id if save else None
-        return None
-
-    def get_saved_story_title(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            save = Save.objects.filter(
-                owner=user, story=obj
-            ).first()
-            return save.story.title if save else None
         return None
     
     def get_comment_id(self, obj):
@@ -76,5 +67,5 @@ class StorySerializer(serializers.ModelSerializer):
             'id', 'owner', 'title', 'destination', 'content', 'image',
             'created_at', 'is_owner', 'profile_id', 'profile_image',
             'like_id', 'likes_count', 'comment_id', 'comments_count',
-            'saved_story_id', 'saved_story_title'
+            'save_id',
         ]
