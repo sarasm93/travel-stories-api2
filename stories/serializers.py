@@ -14,8 +14,8 @@ class StorySerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comment_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
-    save_id = serializers.SerializerMethodField()
-    save_title = serializers.SerializerMethodField()
+    saved_story_id = serializers.SerializerMethodField()
+    saved_story_title = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
