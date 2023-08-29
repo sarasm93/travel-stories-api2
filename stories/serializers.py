@@ -15,6 +15,7 @@ class StorySerializer(serializers.ModelSerializer):
     comment_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     save_id = serializers.SerializerMethodField()
+    save_title = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -50,6 +51,15 @@ class StorySerializer(serializers.ModelSerializer):
             ).first()
             return save.id if save else None
         return None
+
+    def get_save_title(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            save = Save.objects.filter(
+                owner=user, story=obj
+            ).first()
+            return save.title if save else None
+        return None
     
     def get_comment_id(self, obj):
         user = self.context['request'].user
@@ -66,5 +76,5 @@ class StorySerializer(serializers.ModelSerializer):
             'id', 'owner', 'title', 'destination', 'content', 'image',
             'created_at', 'is_owner', 'profile_id', 'profile_image',
             'like_id', 'likes_count', 'comment_id', 'comments_count',
-            'save_id',
+            'save_id', 'save_title'
         ]
