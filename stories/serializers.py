@@ -58,7 +58,7 @@ class StorySerializer(serializers.ModelSerializer):
             save = Save.objects.filter(
                 owner=user, story=obj
             ).first()
-            return save.title if save else None
+            return save.story.title if save else None
         return None
     
     def get_comment_id(self, obj):
