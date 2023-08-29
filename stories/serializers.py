@@ -76,5 +76,5 @@ class StorySerializer(serializers.ModelSerializer):
             'id', 'owner', 'title', 'destination', 'content', 'image',
             'created_at', 'is_owner', 'profile_id', 'profile_image',
             'like_id', 'likes_count', 'comment_id', 'comments_count',
-            'save_id', 'save_title'
+            'saved_story_id', 'saved_story_title'
         ]
