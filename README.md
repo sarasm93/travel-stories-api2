@@ -65,28 +65,7 @@ The Travel Stories API consists of six apps - stories, comments, likes, saves, d
 The site has been tested so that it works on different browsers. It has been tested on Google Chrome, Microsoft Edge, Firefox and Samsung Internet.
 
 ### **Manual testing**
-
-#### **Header**
-| Feature | Action | Expected outcome | Pass/Fail |
-| --- | --- | --- | --- |
-| logo | hover | change color to red | pass |
-| navbar items | hover | change background color to light red | pass |
-| logo | click | redirect to home | pass |
-| navbar Home item | click | redirect to home | pass |
-| navbar Book tickets item | click | open Book Tickets page | pass |
-
-When logged in:
-| Feature | Action | Expected outcome | Pass/Fail |
-| --- | --- | --- | --- |
-| navbar My Bookings item | click | open My Bookings page | pass |
-| navbar Logout item | click | open Log out page | pass |
-
-When logged out:
-| Feature | Action | Expected outcome | Pass/Fail |
-| --- | --- | --- | --- |
-| navbar Sign Up item | click | open Sign Up page | pass |
-| navbar Login item | click | open Log in page | pass |
-
+Throughtout development, manuel testing has been carried out throught the front end site by posting and getting data from the API for all endpoints. Manuel testing of the api has also been done throughout development of the api, from the Django Rest admin site. All the api endpoints pass the manuel testing, i.e. posting, fetching, editing and deleting data. The results from the manual testing can be viewed [here](https://github.com/sarasm93/travel-stories2/blob/main/README.md).
 
 ### **Validator testing**
 The Python code has been validated with the [CI Python Linter](https://pep8ci.herokuapp.com/). All code was valid when put threw the linter except for some trailing whitespaces. 
