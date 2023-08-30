@@ -66,6 +66,26 @@ The site has been tested so that it works on different browsers. It has been tes
 
 ### **Manual testing**
 
+#### **Header**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| logo | hover | change color to red | pass |
+| navbar items | hover | change background color to light red | pass |
+| logo | click | redirect to home | pass |
+| navbar Home item | click | redirect to home | pass |
+| navbar Book tickets item | click | open Book Tickets page | pass |
+
+When logged in:
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| navbar My Bookings item | click | open My Bookings page | pass |
+| navbar Logout item | click | open Log out page | pass |
+
+When logged out:
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| navbar Sign Up item | click | open Sign Up page | pass |
+| navbar Login item | click | open Log in page | pass |
 
 
 ### **Validator testing**
