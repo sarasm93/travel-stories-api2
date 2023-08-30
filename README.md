@@ -10,8 +10,6 @@ This project was built in two parts. This app makes up the back-end API, powered
 
 [Link to the Back End API Repo](https://github.com/sarasm93/travel-stories-api2)
 
-![An image of the deployed front-end app on different screen sizes](documentation/readme-intro.png)
-
 ## **Project goals**
 The main objective with the platform is to inspire to travel, by engage people to share their travel stories, meet new people, discover new places to visit and in the end - travel more!
 
