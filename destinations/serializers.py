@@ -17,7 +17,7 @@ class DestinationSerializer(serializers.ModelSerializer):
         story_name = []
         for story in obj.story_tag.all():
             story_name.append({
-                "story": story.story.title, 
+                "story": story.story.title,
                 "id": story.story.pk})
         return story_name
 

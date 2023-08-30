@@ -6,7 +6,6 @@ from .settings import (
 )
 
 
-# Kod lånad av Moments projeket - ska du behålla denna referens eller kan du skippa den?????????????????????
 @api_view()
 def root_route(request):
     return Response({
@@ -14,7 +13,7 @@ def root_route(request):
     })
 
 
-# dj-rest-auth logout view - bug fix
+# dj-rest-auth logout view bug fix from Code Institute
 @api_view(['POST'])
 def logout_route(request):
     response = Response()

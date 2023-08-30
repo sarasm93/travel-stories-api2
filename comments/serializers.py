@@ -4,7 +4,7 @@ from .models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    """ 
+    """
     Serializer for the Comment model
     """
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -24,10 +24,9 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image', 'story',
-            'created_at', 'content', 
+            'created_at', 'content',
         ]
 
 
 class CommentDetailSerializer(CommentSerializer):
     story = serializers.ReadOnlyField(source='story.id')
-    

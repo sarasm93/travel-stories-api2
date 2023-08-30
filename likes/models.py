@@ -8,7 +8,10 @@ class Like(models.Model):
     Like model related to User and Story.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    story = models.ForeignKey(Story, on_delete=models.CASCADE, related_name='likes')
+    story = models.ForeignKey(
+        Story,
+        on_delete=models.CASCADE,
+        related_name='likes')
 
     class Meta:
         unique_together = ['owner', 'story']

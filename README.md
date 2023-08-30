@@ -56,8 +56,7 @@ The like model holds all information about a like, i.e. which user has made it a
 
 The comment model holds all information about a comment - which user has made it and on which story, the content of the comment and the creation date. 
 
-![ERD diagram showing the project data models and the relationships between them - image 1](documentation/models1.png)
-![ERD diagram showing the project data models and the relationships between them - image 2](documentation/models2.png)
+![ERD diagram showing the project data models and the relationships between them - image 1](documentation/data-model.png)
 
 ## **Features**
 The Travel Stories API consists of six apps - stories, comments, likes, saves, destinations and profiles. Each app endpoint can be reached by adding the corresponding endpoint URL to the main URL https://travel-stories2-eeac1d39adbb.herokuapp.com/. Destinations data is only accessible for the owner of the destionation data, through the front end website. The api superuser can access and manage the back end by logging in to the backend through the Django adminsite. 
@@ -68,12 +67,9 @@ The site has been tested so that it works on different browsers. It has been tes
 ### **Manual testing**
 
 
+
 ### **Validator testing**
-The Python code has been validated with the [CI Python Linter](https://pep8ci.herokuapp.com/). 
-
-
-### **Resolved problems and bugs**
-Kuuuuuuuuuuuuuunde inte nå destinations data från front end - visade sig att jag kopplat destination modelen fel... Skulle kopplas till User, inte Profile. Detta orsakade ett annat fel, dvs. att filtret för denna model inte fungerade, dvs. att det inte gick att filtrera på owner av destinations. Så fort probnlemet med modellen hade lösts så kunde ett fungerande filter läggas till. 
+The Python code has been validated with the [CI Python Linter](https://pep8ci.herokuapp.com/). All code was valid when put threw the linter except for some trailing whitespaces. 
 
 ## **Deployment**
 The back-end API app was deployed to Heroku from GitHub with the following steps:

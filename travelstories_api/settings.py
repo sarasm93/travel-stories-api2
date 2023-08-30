@@ -38,10 +38,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#'DEV' in os.environ
+# 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    '8000-sarasm93-travelstoriesa-qevamglw0zx.ws-eu104.gitpod.io', 
+    '8000-sarasm93-travelstoriesa-qevamglw0zx.ws-eu104.gitpod.io',
     'travel-stories-api2-af9d4146e908.herokuapp.com',
 ]
 
@@ -58,12 +58,12 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'django_filters',
-    'rest_framework.authtoken', 
-    'dj_rest_auth', 
-    'django.contrib.sites', 
-    'allauth', 
-    'allauth.account', 
-    'allauth.socialaccount', 
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
 
@@ -83,8 +83,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )], 
-    'DEFAULT_PAGINATION_CLASS':  'rest_framework.pagination.PageNumberPagination',
+    )],
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y'
 }
@@ -101,7 +102,9 @@ JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
-REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'travelstories_api.serializers.CurrentUserSerializer'}
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER':
+    'travelstories_api.serializers.CurrentUserSerializer'}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -120,7 +123,9 @@ if 'CLIENT_ORIGIN' in os.environ:
     ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    extracted_url = re.match(
+        r'^.+-', os.environ.get(
+            'CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]

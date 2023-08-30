@@ -35,7 +35,7 @@ class DestinationDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Destination detail view.
     Render edit form in the browser.
-    Get the destination and serialize the data. 
+    Get the destination and serialize the data.
     If data is valid - save it. Otherwise throw error.
     """
     serializer_class = DestinationSerializer

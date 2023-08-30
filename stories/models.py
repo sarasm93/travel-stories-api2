@@ -7,7 +7,8 @@ class Story(models.Model):
     title = models.CharField(max_length=50)
     destination = models.CharField(max_length=50)
     content = models.TextField(max_length=1000, blank=True)
-    image = models.ImageField(upload_to='images/', default='../default-image_qzr0l4')
+    image = models.ImageField(
+        upload_to='images/', default='../default-image_qzr0l4')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

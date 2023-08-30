@@ -9,8 +9,8 @@ class Save(models.Model):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     story = models.ForeignKey(
-        Story, 
-        on_delete=models.CASCADE, 
+        Story,
+        on_delete=models.CASCADE,
         related_name='saved')
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -32,7 +32,7 @@ class StorySerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
+
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -50,7 +50,7 @@ class StorySerializer(serializers.ModelSerializer):
             ).first()
             return save.id if save else None
         return None
-    
+
     def get_comment_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
