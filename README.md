@@ -65,6 +65,106 @@ The site has been tested so that it works on different browsers. It has been tes
 ### **Manual testing**
 Throughtout development, manuel testing has been carried out throught the front end site by posting and getting data from the API for all endpoints. Manuel testing of the api has also been done throughout development of the api, from the Django Rest admin site. All the api endpoints pass the manuel testing, i.e. posting, fetching, editing and deleting data. The results from the manual testing can be viewed [here](https://github.com/sarasm93/travel-stories2/blob/main/README.md).
 
+#### **Stories endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| list | view stories | view shared stories in list | pass |
+| form | logged in | view create story form | pass |
+| form | logged out | cannot view create story form | pass |
+| post button | click | submit form and create story | pass |
+| filter button | click | filter and order stories | pass |
+
+#### **Stories/id endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| story | view story | view story | pass |
+| form | logged in | for own story but not others: view edit story form and delete button | pass |
+| form | logged out | cannot view edit story form and delete button | pass |
+| get button | click | submit form and edit story | pass |
+| delete button | click | delete story | pass |
+
+#### **Likes endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| list | view likes | view likes in list | pass |
+| form | logged in | view create like form | pass |
+| form | logged out | cannot view create like form | pass |
+| post button | click | submit form and create like | pass |
+
+#### **Likes/id endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| like | view like | view like | pass |
+| delete button | logged in | for own like but not others: view delete button | pass |
+| delete button | logged out | cannot view delete button | pass |
+| delete button | click | delete like | pass |
+
+#### **Saves endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| list | view saves | view saves in list | pass |
+| form | logged in | view create save form | pass |
+| form | logged out | cannot view create save form | pass |
+| post button | click | submit form and create save | pass |
+
+#### **Saves/id endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| save | view save | view save | pass |
+| delete button | logged in | for own save but not others: view delete button | pass |
+| delete button | logged out | cannot view delete button | pass |
+| delete button | click | delete save | pass |
+
+#### **Comments endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| list | view comments | view comments in list | pass |
+| form | logged in | view create comment form | pass |
+| form | logged out | cannot view create comment form | pass |
+| post button | click | submit form and create comment | pass |
+| filter button | click | filter and order comments | pass |
+
+#### **Comments/id endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| comment | view comment | view comment | pass |
+| form | logged in | for own comment but not others: view edit comment form and delete button | pass |
+| form | logged out | cannot view edit comment form and delete button | pass |
+| get button | click | submit form and edit comment | pass |
+| delete button | click | delete comment | pass |
+
+#### **Profiles endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| list | view profiles | view profiles in list | pass |
+
+#### **Profiles/id endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| profile | view profile | view profile | pass |
+| form | logged in | for own profile but not others: view edit profile form and delete button | pass |
+| form | logged out | cannot view edit profile form and delete button | pass |
+| get button | click | submit form and edit profile | pass |
+| delete button | click | delete profile | pass |
+
+#### **Destinations endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| list | view destinations | view destinations in list | pass |
+| form | logged in | view create destinations form | pass |
+| form | logged out | cannot view create destinations form | pass |
+| post button | click | submit form and destinations story | pass |
+| filter button | click | filter and order destinations | pass |
+
+#### **Destinations/id endpoint**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| destination | view destination | view destination | pass |
+| form | logged in | for own destination but not others: view edit destination form and delete button | pass |
+| form | logged out | cannot view edit destination form and delete button | pass |
+| get button | click | submit form and edit destination | pass |
+| delete button | click | delete destination | pass |
+
 ### **Validator testing**
 The Python code has been validated with the [CI Python Linter](https://pep8ci.herokuapp.com/). All code was valid when put threw the linter except for some trailing whitespaces. 
 
